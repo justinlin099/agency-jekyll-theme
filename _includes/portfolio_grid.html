@@ -1,7 +1,11 @@
 <!-- Portfolio Grid -->
 {% if site.locale and site.locale != "" and site.locale != nil %}
 <section class="bg-light page-section" id="{{ site.data.sitetext.portfolio.section | default: "portfolio" }}">
-  
+  <div class="container">
+    <div class="row">
+      
+    </div>
+    <div class="row">
 	{% for project in site.portfolio %}
       <div class="col-md-4 col-sm-6 row-md-4 row-sm-6 portfolio-item">
         <a class="portfolio-link" data-toggle="modal" href="#p{{ forloop.index }}">
