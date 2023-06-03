@@ -15,9 +15,20 @@ a {
   }
 }
 
+hr {
+  .section-heading-line {
+    border: none;
+    border-top: 10px solid #ff8a1e; /* 设置橙色线条的样式和颜色 */
+    max-width: 80%; /* 设置最大宽度，根据需要进行调整 */
+    margin: 20px auto; /* 设置上下边距为10px，左右自动居中对齐 */
+  }
+}
+
+
 .text-primary {
   color: $primary !important;
 }
+
 
 h1,
 h2,
@@ -28,12 +39,7 @@ h6 {
   font-weight: 700;
   @include heading-font;
 }
-.section-heading-line {
-  border: none;
-  border-top: 10px solid #ff8a1e; /* 设置橙色线条的样式和颜色 */
-  max-width: 80%; /* 设置最大宽度，根据需要进行调整 */
-  margin: 20px auto; /* 设置上下边距为10px，左右自动居中对齐 */
-}
+
 .page-section {
   padding: 100px 0;
   h2.section-heading {
