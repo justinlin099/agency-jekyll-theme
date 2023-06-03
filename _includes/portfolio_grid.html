@@ -15,20 +15,20 @@
 <br>
 <br>
 
-<div style="display: flex; align-items: center;">
-  <div class="sidebar" style="max-width:50%;height:auto;">
-      <br>
-      <h1>設計階段</h1>
-      <h6>為了使設計師更迅速的進行任務，我們將設計方法依照右側七個階段進行分類:</h6>
-      <br>
-  </div>
-</div>
+
 
 {% if site.locale and site.locale != "" and site.locale != nil %}
 <section class="bg-light page-section" id="{{ site.data.sitetext.portfolio.section | default: "portfolio" }}">
   <div class="container">
     <div class="row">
-      
+      <div style="display: flex; align-items: center;">
+        <div class="sidebar" style="max-width:50%;height:auto;">
+            <br>
+            <h1>設計階段</h1>
+            <h6>為了使設計師更迅速的進行任務，我們將設計方法依照右側七個階段進行分類:</h6>
+            <br>
+        </div>
+      </div>
     </div>
     <div class="row">
 	{% for project in site.portfolio %}
