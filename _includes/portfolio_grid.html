@@ -10,6 +10,25 @@
       display: block;
       margin-top: 10px;
   }
+
+  .portfolio-like {
+    display: flex;
+    align-items: center;
+  }
+
+  .like-button {
+      width: 30px;
+      height: 30px;
+      background-image: url('heart_default.png'); /* 未点击状态的背景图片 */
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin-left: 10px;
+      cursor: pointer;
+  }
+
+  .like-button.clicked {
+      background-image: url('heart_clicked.png'); /* 点击后的背景图片 */
+  }
 </style>
 
 <br>
@@ -48,6 +67,9 @@
         <div class="portfolio-caption">
           <h4>{{ project.caption.title }}</h4>
           <p class="text-muted">{{ project.caption.subtitle }}</p>
+          <div class="portfolio-like">
+            <div class="like-button"></div>
+          </div>
         </div>
       </div>
 	{% endfor %}
@@ -77,6 +99,9 @@
         <div class="portfolio-caption">
           <h4>{{ project.caption.title }}</h4>
           <p class="text-muted">{{ project.caption.subtitle }}</p>
+          <div class="portfolio-like">
+            <div class="like-button"></div>
+          </div>
         </div>
       </div>
 	{% endfor %}
@@ -85,3 +110,56 @@
 </section>
 {% endif %}
 {% include modals.html %}
+
+<script>
+  // 获取储存在本地存储中的按钮点击状态数组
+  let savedButtons = JSON.parse(localStorage.getItem('clickedButtons')) || [];
+
+  // 获取所有的like按钮
+  const likeButtons = document.getElementsByClassName('like-button');
+
+  // 设置初始按钮样式
+  for (let i = 0; i < likeButtons.length; i++) {
+    const button = likeButtons[i];
+    const buttonIndex = i + 1;
+
+    // 检查该按钮是否在点击状态数组中，并设置其初始背景图片
+    if (savedButtons.includes(buttonIndex.toString())) {
+      button.classList.add('clicked');
+    }
+
+    // 添加点击事件处理程序
+    button.addEventListener('click', function() {
+      // 切换按钮的点击状态
+      const index = savedButtons.indexOf(buttonIndex.toString());
+      if (index > -1) {
+        savedButtons.splice(index, 1);
+      } else {
+        savedButtons.push(buttonIndex.toString());
+      }
+
+      // 存储按钮点击状态数组到本地存储
+      localStorage.setItem('clickedButtons', JSON.stringify(savedButtons));
+
+      // 更新按钮的样式
+      updateButtonStyles();
+    });
+  }
+
+  // 更新按钮的样式
+  function updateButtonStyles() {
+    for (let j = 0; j < likeButtons.length; j++) {
+      const button = likeButtons[j];
+      const buttonIndex = j + 1;
+
+      if (savedButtons.includes(buttonIndex.toString())) {
+        button.classList.add('clicked');
+      } else {
+        button.classList.remove('clicked');
+      }
+    }
+  }
+
+  // 页面加载时更新按钮的样式
+  updateButtonStyles();
+</script>
