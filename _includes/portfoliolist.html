@@ -25,17 +25,25 @@
       // 创建列表项元素
       const listItem = document.createElement('li');
   
-      // 创建包含portfolio信息的HTML内容
-      const portfolioInfo = `
-        <h4>${site.portfolio[buttonIndex - 1].caption.title}</h4>
-        <p class="text-muted">${site.portfolio[buttonIndex - 1].caption.subtitle}</p>
-      `;
+      // 获取对应的portfolio数据
+      const portfolioData = site.portfolio.find(function(project, index) {
+        return (index + 1) === parseInt(buttonIndex);
+      });
   
-      // 将HTML内容插入列表项元素
-      listItem.innerHTML = portfolioInfo;
+      // 检查portfolio数据是否存在
+      if (portfolioData) {
+        // 创建包含portfolio信息的HTML内容
+        const portfolioInfo = `
+          <h4>${portfolioData.caption.title}</h4>
+          <p class="text-muted">${portfolioData.caption.subtitle}</p>
+        `;
   
-      // 将列表项元素添加到容器元素中
-      portfolioContainer.appendChild(listItem);
+        // 将HTML内容插入列表项元素
+        listItem.innerHTML = portfolioInfo;
+  
+        // 将列表项元素添加到容器元素中
+        portfolioContainer.appendChild(listItem);
+      }
     });
   </script>
   
