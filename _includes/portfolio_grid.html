@@ -64,12 +64,13 @@
           </div>
           <img class="img-fluid" src="{{ project.caption.thumbnail }}" alt="">
         </a>
+        <div class="portfolio-like">
+          <div class="like-button"></div>
+        </div>
         <div class="portfolio-caption">
           <h4>{{ project.caption.title }}</h4>
           <p class="text-muted">{{ project.caption.subtitle }}</p>
-          <div class="portfolio-like">
-            <div class="like-button"></div>
-          </div>
+          
         </div>
       </div>
 	{% endfor %}
