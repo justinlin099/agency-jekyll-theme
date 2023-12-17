@@ -9,6 +9,7 @@
           {% if site.data.sitetext[site.locale].services.text %}
 		  <h3 class="section-subheading text-muted">{{ site.data.sitetext[site.locale].services.text }}</h3>
 		  {% endif %}
+      {{ content }}
         </div>
       </div>	  
     </div>
@@ -23,12 +24,12 @@
         {% if site.data.sitetext.services.text %}
     <h3 class="section-subheading text-muted">{{ site.data.sitetext.services.text }}</h3>
     {% endif %}
+    {{ content }}
       </div>
     </div>
   
   </div>
 </section>
 {% endif %}
-{{ content }}
 {% include modals.html %}
 <!-- End Services -->
